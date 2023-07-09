@@ -1,10 +1,8 @@
-import React from "react";
-
 const AnimeList = ({ animeList, setAnimeInfo }: any) => {
   return (
     <>
       {/* {console.log(animeList)} */}
-      
+
       {animeList
         ? animeList.map((anime: any, index: number) => {
             return (
