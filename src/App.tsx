@@ -5,7 +5,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import AnimeList from "./components/AnimeList";
 import AnimeInfo from "./components/AnimeInfo";
 
-const base_url = `https://api.jikan.moe/v4/anime?q=`;
+const BASE_URL = `https://api.jikan.moe/v4/anime?q=`;
 
 // debounce search
 const debounce = (
@@ -29,9 +29,7 @@ function App() {
 
   // get data from jikan api
   const getAnimeData = async () => {
-    const res = await fetch(
-      `https://api.jikan.moe/v4/anime?q=${search}&limit=20`
-    );
+    const res = await fetch(`${BASE_URL}`);
     const resData = await res.json();
     setAnimeData(resData.data);
   };
@@ -40,7 +38,7 @@ function App() {
   const getSearchAnimeData = async (inputVal: string) => {
     try {
       if (inputVal !== "") {
-        const res = await fetch(`${base_url}${inputVal}`);
+        const res = await fetch(`${BASE_URL}${inputVal}`);
         const resData = await res.json();
         setAnimeData(resData.data);
       } else {
