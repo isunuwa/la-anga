@@ -1,0 +1,13 @@
+.card{
+  display: flex;
+  margin: 15px;
+
+  img{
+    max-width: 250px;
+    height: 250px;
+    width: 100%;
+    
+    background-size: cover;
+    object-fit: cover;
+  }
+}
