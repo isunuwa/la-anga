@@ -8,7 +8,10 @@ import AnimeInfo from "./components/AnimeInfo";
 const base_url = `https://api.jikan.moe/v4/anime?q=`;
 
 // debounce search
-const debounce = (func: { (inputVal: string): Promise<void>; (arg0: any): any; }, wait: number | undefined) => {
+const debounce = (
+  func: { (inputVal: string): Promise<void>; (arg0: any): any },
+  wait: number | undefined
+) => {
   let timeout: number | undefined;
 
   return (...args: any) => {
@@ -40,8 +43,7 @@ function App() {
         const res = await fetch(`${base_url}${inputVal}`);
         const resData = await res.json();
         setAnimeData(resData.data);
-      }
-      else{
+      } else {
         getAnimeData();
       }
     } catch (e) {
@@ -49,7 +51,10 @@ function App() {
     }
   };
 
-  const handleSearch = useCallback(debounce((inputVal: string) => getSearchAnimeData(inputVal), 500), []);
+  const handleSearch = useCallback(
+    debounce((inputVal: string) => getSearchAnimeData(inputVal), 500),
+    []
+  );
 
   useEffect(() => {
     getAnimeData();
